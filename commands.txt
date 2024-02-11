@@ -82,6 +82,7 @@ git remote add origin https://github.com/your_username/terraform.git
 
 # Add the URL for the remote repository where your local repository will be pushed
 git remote add origin https://github.com/aminiseehear/Terraform-POC-Project.git
+git remote add origin https://github.com/amin2018/Terraform-POC-Project.git
 
 # Push the changes in your local repository to GitHub
 git push -u origin master
