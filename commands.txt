@@ -61,9 +61,11 @@ docker run --rm [IMAGE]:[TAG]
 
 # Set your GitHub username as the global user name for Git
 git config --global user.name "aminiseehear"
+git config --global user.name "amin2018"
 
 # Set your email as the global user email for Git
 git config --global user.email "amin@iseehear.com"
+git config --global user.email "amin2018@gmail.com"
 
 # Initialize the current directory as a Git repository
 git init

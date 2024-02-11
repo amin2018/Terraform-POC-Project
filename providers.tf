@@ -6,9 +6,18 @@ provider "google" {
 }
 
 provider "kubernetes" {
-  host                   = "https://${module.gke.gke_cluster_endpoint}"
-  token                  = module.gke.gke_cluster_access_token
-  cluster_ca_certificate = base64decode(module.gke.gke_cluster_ca_certificate)
+  # host                   = "https://${module.gke.gke_cluster_endpoint}"
+  # token                  = module.gke.gke_cluster_access_token
+  # cluster_ca_certificate = base64decode(module.gke.gke_cluster_ca_certificate)
+  config_path    = "~/.kube/config"
+  config_context = "gke_terraform-poc-project-413503_us-central1-a_test-cluster"
+}
+
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
+  # config_context = "gke_terraform-poc-project-413503_us-central1-a_test-cluster"
 }
 
 terraform {
