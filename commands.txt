@@ -1,0 +1,93 @@
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\lenov\.credentials\terraform-poc-project-413503-cacfa73fca4a.json"
+
+gcloud config set account kochi2023cloud@gmail.com
+
+gcloud config set project terraform-poc-project-413503
+
+gcloud auth login
+
+
+Authenticate with Google Cloud:
+gcloud auth login
+
+Set Google Cloud Project:
+gcloud config set project [PROJECT_ID]
+
+Enable Artifact Registry API:
+gcloud services enable artifactregistry.googleapis.com
+
+Create a Docker Repository in GAR:
+gcloud artifacts repositories create [REPOSITORY_NAME] --repository-format=docker --location=[LOCATION] --description="[DESCRIPTION]"
+
+Make the Repository Public:
+gcloud artifacts repositories add-iam-policy-binding [REPOSITORY_NAME] --location=[LOCATION] --member=allUsers --role=roles/artifactregistry.reader
+
+Retrieve the IAM Policy for the Repository (To Verify Public Access):
+gcloud artifacts repositories get-iam-policy [REPOSITORY_NAME] --location=[LOCATION]
+
+Authenticate Docker with Google Cloud:
+gcloud auth configure-docker
+
+Push a Docker Image to Google Artifact Registry:
+docker tag [LOCAL_IMAGE]:[TAG] [LOCATION]-docker.pkg.dev/[PROJECT_ID]/[REPOSITORY_NAME]/[IMAGE]:[TAG]
+docker push [LOCATION]-docker.pkg.dev/[PROJECT_ID]/[REPOSITORY_NAME]/[IMAGE]:[TAG]
+
+Pull a Docker Image from Google Artifact Registry:
+docker pull [LOCATION]-docker.pkg.dev/[PROJECT_ID]/[REPOSITORY_NAME]/[IMAGE]:[TAG]
+
+Run a Docker Image:
+docker run [OPTIONS] [IMAGE]:[TAG] [COMMAND] [ARG...]
+Commonly Used Options with docker run:
+
+Run in Detached Mode:
+docker run -d [IMAGE]:[TAG]
+
+Publish Ports:
+docker run -p [HOST_PORT]:[CONTAINER_PORT] [IMAGE]:[TAG]
+
+Set Environment Variables:
+docker run -e [VARIABLE_NAME]=[VALUE] [IMAGE]:[TAG]
+
+run the Container and assign Environment Variables:
+docker run -d -p [HOST_PORT]:[CONTAINER_PORT] -e [ENV_VAR_NAME_1]='[ENV_VAR_VALUE_1]' -e [ENV_VAR_NAME_2]='[ENV_VAR_VALUE_2]' -e [ENV_VAR_NAME_3]='[ENV_VAR_VALUE_3]' [IMAGE_FULL_PATH]
+
+Assign a Name to the Container:
+docker run --name [CONTAINER_NAME] [IMAGE]:[TAG]
+
+Automatically Remove the Container When It Exits:
+docker run --rm [IMAGE]:[TAG]
+
+
+
+# Set your GitHub username as the global user name for Git
+git config --global user.name "aminiseehear"
+git config --global user.name "amin2018"
+
+# Set your email as the global user email for Git
+git config --global user.email "amin@iseehear.com"
+git config --global user.email "amin2018@gmail.com"
+
+# Initialize the current directory as a Git repository
+git init
+
+# Add all the files in the current directory to the Git staging area
+git add .
+
+# Commit the staged changes with a message "First commit"
+git commit -m "First commit"
+
+# Add the URL for the remote repository where your local repository will be pushed
+# Replace 'your_username' with your GitHub username and 'terraform' with your repository name
+git remote add origin https://github.com/your_username/terraform.git
+
+# Add the URL for the remote repository where your local repository will be pushed
+git remote add origin https://github.com/aminiseehear/Terraform-POC-Project.git
+git remote add origin https://github.com/amin2018/Terraform-POC-Project.git
+
+# Push the changes in your local repository to GitHub
+git push -u origin master
+
+# Clone the repository to your local machine
+# Replace 'your_username' with your GitHub username and 'repository_name' with your repository name
+git clone https://github.com/your_username/repository_name.git
+git clone https://github.com/amin2018/terraform-POC-project.git
