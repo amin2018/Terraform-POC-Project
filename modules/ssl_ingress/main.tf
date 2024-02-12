@@ -1,26 +1,35 @@
-resource "kubernetes_ingress" "app_ingress" {
-    wait_for_load_balancer = true
+resource "kubernetes_ingress_v1" "app_ssl_ingress" {
   metadata {
-    name = "app-ingress"
+    name = "app-ssl-ingress"
     annotations = {
-      "kubernetes.io/ingress.class" = "nginx"
-    #   "nginx.ingress.kubernetes.io/rewrite-target" = "/"
-    #   "kubernetes.io/ingress.global-static-ip-name" = var.ingress_static_ip_name
+      "nginx.ingress.kubernetes.io/rewrite-target" = "/"
+      "kubernetes.io/ingress.class"                = "nginx"
+      "nginx.ingress.kubernetes.io/ssl-redirect"   = "true"
     }
   }
 
   spec {
     rule {
+      host = var.ingress_hostname
       http {
         path {
           path = "/"
+          path_type = "Prefix"
           backend {
-            # Ensure this references the correct service within your configuration
-            service_name = var.service_name
-            service_port = 80
+            service {
+              name = var.service_name  # Updated to use var.service_name
+              port {
+                number = var.service_port
+              }
+            }
           }
         }
       }
+    }
+
+    tls {
+      hosts      = [var.ingress_hostname]
+      secret_name = var.ssl_certificate_secret_name
     }
   }
 }

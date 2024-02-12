@@ -65,22 +65,32 @@
 #   sensitive   = true
 # }
 
-// Kubernetes Deployment Module Outputs
-// ------------------------------------ 
-// Output the name of the Kubernetes deployment
+# Outputs from the Kubernetes Deployment Module
+# ---------------------------------------------
 output "k8s_deployment_name" {
   description = "The name of the Kubernetes deployment."
   value       = module.k8s_deployment.deployment_name
 }
 
-// Output the name of the Kubernetes service
-output "service_name" {
-  description = "The name of the created service."
+# Outputs from the Kubernetes Service Module
+# ------------------------------------------
+output "k8s_service_name" {
+  description = "The name of the Kubernetes Service."
   value       = module.k8s_service.service_name
 }
 
-
-# output "nginx_controller_ip" {
-#   description = "The IP address of the nginx controller"
+# Outputs from the Nginx Ingress Module
+# (Uncomment if the Nginx Ingress module is in use)
+# --------------------------------------
+# output "nginx_ingress_ip" {
+#   description = "The IP address of the NGINX Ingress LoadBalancer."
 #   value       = module.nginx_ingress.ingress_ip_address
+# }
+
+# Outputs from the SSL Ingress Module
+# (Uncomment if the SSL Ingress module is in use)
+# -------------------------------------
+# output "ssl_ingress_hostname" {
+#   description = "The hostname configured for the SSL Ingress."
+#   value       = module.ssl_ingress.ingress_hostname
 # }

@@ -44,24 +44,27 @@ module "k8s_deployment" {
   gke_cluster_ca_certificate         = ""
   gke_cluster_access_token           = ""
 }
-
-// Module to create a Kubernetes service
+# Module to create a Kubernetes Service
 module "k8s_service" {
-  source          = "./modules/k8s_service"
-  deployment_name = module.k8s_deployment.deployment_name
+  source       = "./modules/k8s_service"
+  service_name = var.service_name
+  service_port = var.service_port
+  target_port  = var.target_port
 }
 
-# // Module to create a NGINX Ingress Controller
+# # Module to create an NGINX Ingress Controller
 # module "nginx_ingress" {
 #   source = "./modules/nginx_ingress"
 # }
 
-# // Module to create a NGINX Ingress Route
+# # Module to create an NGINX Ingress Route with SSL
 # module "ssl_ingress" {
 #   source                 = "./modules/ssl_ingress"
-#   ingress_static_ip_name = module.nginx_ingress.ingress_ip_address
+#   ingress_hostname       = var.ingress_hostname
+#   ssl_certificate_secret_name = var.ssl_certificate_secret_name
 #   service_name           = module.k8s_service.service_name
 # }
+
 
 
 
