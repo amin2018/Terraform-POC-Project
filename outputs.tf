@@ -80,7 +80,7 @@ output "service_name" {
 }
 
 
-output "nginx_controller_ip" {
-  description = "The IP address of the nginx controller"
-  value       = module.nginx_ingress.ingress_ip_address
-}
+# output "nginx_controller_ip" {
+#   description = "The IP address of the nginx controller"
+#   value       = module.nginx_ingress.ingress_ip_address
+# }

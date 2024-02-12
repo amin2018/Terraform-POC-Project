@@ -51,17 +51,17 @@ module "k8s_service" {
   deployment_name = module.k8s_deployment.deployment_name
 }
 
-// Module to create a NGINX Ingress Controller
-module "nginx_ingress" {
-  source = "./modules/nginx_ingress"
-}
+# // Module to create a NGINX Ingress Controller
+# module "nginx_ingress" {
+#   source = "./modules/nginx_ingress"
+# }
 
-// Module to create a NGINX Ingress Route
-module "ssl_ingress" {
-  source                 = "./modules/ssl_ingress"
-  ingress_static_ip_name = module.nginx_ingress.ingress_ip_address
-  service_name           = module.k8s_service.service_name
-}
+# // Module to create a NGINX Ingress Route
+# module "ssl_ingress" {
+#   source                 = "./modules/ssl_ingress"
+#   ingress_static_ip_name = module.nginx_ingress.ingress_ip_address
+#   service_name           = module.k8s_service.service_name
+# }
 
 
 
