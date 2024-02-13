@@ -40,9 +40,9 @@ module "k8s_deployment" {
   deployment_image                   = var.deployment_image
   deployment_name                    = var.deployment_name
   cloud_sql_instance_connection_name = "terraform-poc-project-413503:us-central1:my-instance"
-  gke_cluster_endpoint               = "23.236.58.243"
-  gke_cluster_ca_certificate         = ""
-  gke_cluster_access_token           = ""
+  # gke_cluster_endpoint               = "23.236.58.243"
+  # gke_cluster_ca_certificate         = ""
+  # gke_cluster_access_token           = ""
 }
 # Module to create a Kubernetes Service
 module "k8s_service" {
@@ -52,18 +52,20 @@ module "k8s_service" {
   target_port  = var.target_port
 }
 
-# # Module to create an NGINX Ingress Controller
-# module "nginx_ingress" {
-#   source = "./modules/nginx_ingress"
-# }
+# Module to create an NGINX Ingress Controller
+module "nginx_ingress" {
+  source = "./modules/nginx_ingress"
+}
 
-# # Module to create an NGINX Ingress Route with SSL
-# module "ssl_ingress" {
-#   source                 = "./modules/ssl_ingress"
-#   ingress_hostname       = var.ingress_hostname
-#   ssl_certificate_secret_name = var.ssl_certificate_secret_name
-#   service_name           = module.k8s_service.service_name
-# }
+
+# Module to create an NGINX Ingress Route with SSL
+module "ssl_ingress" {
+  source = "./modules/ssl_ingress"
+  # ingress_hostname            = var.ingress_hostname
+  # ssl_certificate_secret_name = var.ssl_certificate_secret_name
+  service_name = var.service_name
+  service_port = var.service_port
+}
 
 
 

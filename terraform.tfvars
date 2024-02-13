@@ -29,7 +29,7 @@ service_name = "app-service"
 service_port = 80   # External port
 target_port  = 8080 # Port application is listening on inside the container
 
-# Variables for the SSL Ingress module
-ingress_hostname            = "test.labcloudplatform.com"
-ssl_certificate_secret_name = ""
+# # Variables for the SSL Ingress module
+# ingress_hostname            = "test.labcloudplatform.com"
+# ssl_certificate_secret_name = ""
 

@@ -33,20 +33,20 @@ variable "cloud_sql_instance_connection_name" {
   type        = string
 }
 
-variable "gke_cluster_endpoint" {
-  description = "The endpoint of the GKE cluster."
-  type        = string
-}
+# # variable "gke_cluster_endpoint" {
+# #   description = "The endpoint of the GKE cluster."
+# #   type        = string
+# # }
 
-variable "gke_cluster_ca_certificate" {
-  description = "The public certificate that is the root of trust for the GKE cluster."
-  type        = string
-}
+# # variable "gke_cluster_ca_certificate" {
+# #   description = "The public certificate that is the root of trust for the GKE cluster."
+# #   type        = string
+# # }
 
-variable "gke_cluster_access_token" {
-  description = "The access token for authenticating to the GKE cluster."
-  type        = string
-  sensitive   = true
-}
+# # variable "gke_cluster_access_token" {
+# #   description = "The access token for authenticating to the GKE cluster."
+# #   type        = string
+# #   sensitive   = true
+# }
 
 

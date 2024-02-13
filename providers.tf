@@ -5,21 +5,20 @@ provider "google" {
   zone    = var.zone
 }
 
+// Define Kubernetes provider for managing Kubernetes resources
 provider "kubernetes" {
-  # host                   = "https://${module.gke.gke_cluster_endpoint}"
-  # token                  = module.gke.gke_cluster_access_token
-  # cluster_ca_certificate = base64decode(module.gke.gke_cluster_ca_certificate)
-  config_path    = "~/.kube/config"
+  config_path    = "~/.kube/config" // Path to your Kubernetes config file
   config_context = "gke_terraform-poc-project-413503_us-central1-a_test-cluster"
 }
 
+// Define Helm provider for managing Helm charts
 provider "helm" {
   kubernetes {
-    config_path = "~/.kube/config"
+    config_path = "~/.kube/config" // Path to your Kubernetes config file
   }
-  # config_context = "gke_terraform-poc-project-413503_us-central1-a_test-cluster"
 }
 
+// Specify the required Terraform version and providers
 terraform {
   required_version = ">= 0.12.7"
 
@@ -34,3 +33,4 @@ terraform {
     }
   }
 }
+

@@ -10,7 +10,7 @@ resource "kubernetes_ingress_v1" "app_ssl_ingress" {
 
   spec {
     rule {
-      host = var.ingress_hostname
+    //  host = var.ingress_hostname
       http {
         path {
           path = "/"
@@ -27,9 +27,9 @@ resource "kubernetes_ingress_v1" "app_ssl_ingress" {
       }
     }
 
-    tls {
-      hosts      = [var.ingress_hostname]
-      secret_name = var.ssl_certificate_secret_name
-    }
+    # tls {
+    #   hosts      = [var.ingress_hostname]
+    #   secret_name = var.ssl_certificate_secret_name
+    # }
   }
 }

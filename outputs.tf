@@ -65,31 +65,42 @@
 #   sensitive   = true
 # }
 
-# Outputs from the Kubernetes Deployment Module
-# ---------------------------------------------
+// Outputs from the Kubernetes Deployment Module
 output "k8s_deployment_name" {
   description = "The name of the Kubernetes deployment."
   value       = module.k8s_deployment.deployment_name
 }
 
-# Outputs from the Kubernetes Service Module
-# ------------------------------------------
+// Outputs from the Kubernetes Service Module
 output "k8s_service_name" {
   description = "The name of the Kubernetes Service."
   value       = module.k8s_service.service_name
 }
 
-# Outputs from the Nginx Ingress Module
-# (Uncomment if the Nginx Ingress module is in use)
-# --------------------------------------
-# output "nginx_ingress_ip" {
-#   description = "The IP address of the NGINX Ingress LoadBalancer."
-#   value       = module.nginx_ingress.ingress_ip_address
-# }
+// Outputs from the NGINX Ingress Module
+output "nginx_ingress_service_name" {
+  description = "The name of the NGINX Ingress Controller Service."
+  value       = module.nginx_ingress.nginx_ingress_service_name
+}
 
-# Outputs from the SSL Ingress Module
-# (Uncomment if the SSL Ingress module is in use)
-# -------------------------------------
+output "nginx_ingress_service_port" {
+  description = "The port number of the NGINX Ingress Controller Service."
+  value       = module.nginx_ingress.nginx_ingress_service_port
+}
+
+output "nginx_ingress_service_cluster_ip" {
+  description = "The cluster IP of the NGINX Ingress Controller Service."
+  value       = module.nginx_ingress.nginx_ingress_service_cluster_ip
+}
+
+output "nginx_ingress_service_load_balancer_ip" {
+  description = "The external IP address of the NGINX Ingress Controller Service LoadBalancer, if available."
+  value       = module.nginx_ingress.nginx_ingress_service_load_balancer_ip
+}
+
+# #Outputs from the SSL Ingress Module
+# #(Uncomment if the SSL Ingress module is in use)
+# #-------------------------------------
 # output "ssl_ingress_hostname" {
 #   description = "The hostname configured for the SSL Ingress."
 #   value       = module.ssl_ingress.ingress_hostname

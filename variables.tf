@@ -84,22 +84,22 @@ variable "service_name" {
 
 variable "service_port" {
   description = "The port on which the Kubernetes Service is exposed."
-  type        = number
+  type        = string
 }
 
 variable "target_port" {
   description = "The port on the pod targeted by the Kubernetes Service."
-  type        = number
+  type        = string
 }
 
 # Variables for the SSL_Ingress modules 
 # --------------------------------------------------
-variable "ingress_hostname" {
-  description = "The hostname for the ingress resource."
-  type        = string
-}
+# variable "ingress_hostname" {
+#   description = "The hostname for the ingress resource."
+#   type        = string
+# }
 
-variable "ssl_certificate_secret_name" {
-  description = "The name of the Secret resource containing the TLS certificate and private key."
-  type        = string
-}
+# variable "ssl_certificate_secret_name" {
+#   description = "The name of the Secret resource containing the TLS certificate and private key."
+#   type        = string
+# }
